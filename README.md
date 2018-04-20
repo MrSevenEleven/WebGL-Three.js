@@ -1,2 +1,2 @@
-# WebGL-Three.js-
+# WebGL-Three.js
 study of WebGL

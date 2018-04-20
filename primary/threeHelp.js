@@ -91,3 +91,26 @@ stats.update();//游戏循环中持续执行
     // var material = new THREE.MeshBasicMaterial({map:texture});
     // 将texture.needsUpdate设置为了true，如果不设置为true，那么纹理就不会更新 .纹理的绘制是需要一段时间的，javascript是可以异步运行的，在canvas绘制出图形之前，
     // 可能three.js就开始根据纹理渲染图形了。如果纹理不更新，那么正方体一直会是以前没有绘制完成的纹理，很可能是材质本身的颜色。
+
+
+// 3D模型加载与使用
+// 模型是由面组成，面分为三角形和四边形面。三角形和四边形面组成了网格模型。在Three.js中用THREE.Mesh来表示网格模型。THREE.Mesh可以和THREE.Line相提并论，区
+// 别是THREE.Line表示的是线条。THREE.Mesh表示面的集合
+    // THREE.Mesh = function ( geometry, material )
+        // geometry：是一个THREE.Geometry类型的对象,他是一个包含顶点和顶点之间连接关系的对象。
+        // Material：就是定义的材质。有了材质就能够让模型更好看，材质会影响光照、纹理对Mesh的作用效果。
+    // 模型加载到浏览器中的过程
+    //     1、服务器上的模型文件以文本的方式存储；
+    //     2、浏览器下载文件到本地；
+    //     3、Javascript解析模型文件，生成Mesh网格模型；
+    //     4、显示在场景中；
+    //         1、服务器上的模型文件大多是存储的模型的顶点信息，这些信息可以以文本的方式存储的（并不一定需要用文本的方式存储）。Three.js支持很多种3D模型格式，例
+    //         如ply，stl，obj，vtk等等
+    //         2、第二步是浏览器下载文本文件，只需要使用javascript的异步请求就可以实现了。
+    //         3、Javascript解析文本文件并生成一个geometry，最终生成Mesh。
+    //         4、当产生Mesh后，将其加入到场景中。
+
+    // 注：最新的three.js（r89）中，模型加载函数与中文网教材（r73）有差别，VTK加载方式如index7内，并且中文网示例中原写在VTKLoader.js末尾的四个计算重心等的函数
+    //     已经没有了，需要自行在加载模型时调用，部分函数名有变化，如index7.js。其中不执行computeVertexNormals（）将导致模型加载不成功。
+
+        // 参考文档：https://www.jianshu.com/p/9e2f2075d803   将不同格式的3d模型导入three.js
